@@ -53,6 +53,11 @@ class HomeFragment : Fragment() {
 
             findNavController().navigate(R.id.action_homeFragment_to_specialistFragment)
         }
+
+        binding.profilebtn.setOnClickListener{
+
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
     }
 
     override fun onDestroyView() {

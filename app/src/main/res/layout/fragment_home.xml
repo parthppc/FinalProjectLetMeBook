@@ -8,8 +8,6 @@
     tools:context=".HomeFragment">
 
 
-
-
     <TextView
         android:id="@+id/text_home"
         android:layout_width="match_parent"
@@ -39,6 +37,7 @@
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#C5C2C2"
@@ -61,5 +60,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.456" />
+
+    <Button
+        android:id="@+id/profilebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginBottom="32dp"
+        android:text="Profile"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSpecialists"
+        app:layout_constraintStart_toStartOf="@+id/buttonSpecialists" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
