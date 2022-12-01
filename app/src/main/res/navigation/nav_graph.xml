@@ -17,5 +17,14 @@
         android:id="@+id/homeFragment"
         android:name="project.st991591950.dhruvparthtapasvi.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_specialistFragment"
+            app:destination="@id/specialistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/specialistFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment"
+        android:label="fragment_specialist"
+        tools:layout="@layout/fragment_specialist" />
 </navigation>
