@@ -97,11 +97,14 @@ class LoginFragment : Fragment() {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
 
                     if (fraagment == 1){
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
+                        findNavController().navigate(R.id.action_loginFragment_to_adminFragment)
+
                     }
                     else{
                        // findNavController().navigate(R.id.action_loginFragment_to_adminFragment)
-                        findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+
                     }
 
                 }
@@ -109,11 +112,11 @@ class LoginFragment : Fragment() {
 
                     binding.authButton.text = "Login"
                     binding.authButton.setOnClickListener {
-                        fraagment = 1
+                        fraagment = 0
                         launchSignInFlow()
                     }
                     binding.textViewAdmin.setOnClickListener {
-                        fraagment = 0
+                        fraagment = 1
                         launchSignInFlow()
                     }
                 }
