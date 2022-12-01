@@ -20,7 +20,7 @@ import project.st991591950.dhruvparthtapasvi.R
 
 class LoginFragment : Fragment() {
     private val viewModel by viewModels<LoginViewModel>()
-    private var AuthState = 0
+    private var fraagment = 0
     private var _binding: FragmentLoginBinding? = null
     companion object {
         const val TAG = "MainFragment"
@@ -95,20 +95,25 @@ class LoginFragment : Fragment() {
         viewModel.authenticationState.observe(viewLifecycleOwner, Observer { authenticationState ->
             when (authenticationState) {
                 LoginViewModel.AuthenticationState.AUTHENTICATED -> {
-                    //binding.CustLogin.text = getString(R.string.logout_button_text)
-//                    if(AuthState == 1) {
-//                        Log.d("authState",AuthState.toString())
-//                        findNavController().navigate(R.id.action_SecondFragment_to_customerDashboard)
-//                    }else if (AuthState == 2) {
-//                        findNavController().navigate(R.id.action_SecondFragment_to_professionalLogin)
-//                    }
 
-                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    if (fraagment == 1){
+                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    }
+                    else{
+                       // findNavController().navigate(R.id.action_loginFragment_to_adminFragment)
+                        findNavController().navigate(R.id.action_loginFragment_to_profileFragment)
+                    }
+
                 }
                 else -> {
-                    //    binding.welcomeText.text = factToDisplay
+
                     binding.authButton.text = "Login"
                     binding.authButton.setOnClickListener {
+                        fraagment = 1
+                        launchSignInFlow()
+                    }
+                    binding.textViewAdmin.setOnClickListener {
+                        fraagment = 0
                         launchSignInFlow()
                     }
                 }
