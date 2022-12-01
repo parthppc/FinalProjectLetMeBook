@@ -63,10 +63,11 @@
 
     <Button
         android:id="@+id/profilebtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="186dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="36dp"
+        android:drawableLeft="@drawable/profile"
         android:text="Profile"
         app:layout_constraintBottom_toTopOf="@+id/buttonSpecialists"
         app:layout_constraintStart_toStartOf="@+id/buttonSpecialists" />

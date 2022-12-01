@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
 
         val textView: TextView = binding.textWelcome
 
-        textView.text = "Welcome to LetMeBooK"
+        textView.text = "Welcome to Dental Appointment Booking System"
 
         return binding.root
 
@@ -110,7 +110,7 @@ class LoginFragment : Fragment() {
                 }
                 else -> {
 
-                    binding.authButton.text = "Login"
+
                     binding.authButton.setOnClickListener {
                         fraagment = 0
                         launchSignInFlow()
