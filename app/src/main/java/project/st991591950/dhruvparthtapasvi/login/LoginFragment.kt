@@ -111,6 +111,9 @@ class LoginFragment : Fragment() {
                     binding.authButton.setOnClickListener {
                         launchSignInFlow()
                     }
+                    binding.textViewAdmin.setOnClickListener {
+                        launchSignInFlow()
+                    }
                 }
             }
         })
