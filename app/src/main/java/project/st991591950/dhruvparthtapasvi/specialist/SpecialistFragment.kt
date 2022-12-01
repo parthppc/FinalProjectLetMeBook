@@ -47,12 +47,21 @@ class SpecialistFragment : Fragment() {
     private fun generateDummyList(size: Int): List<SpecialistList> {
         val list = ArrayList<SpecialistList>()
         for (i in 0 until size) {
+            val drawable = when (i%6){
+                0 -> R.drawable.doctorimage
+                1 -> R.drawable.doctorimage
+                2 -> R.drawable.doctorimage
+                3 -> R.drawable.doctorimage
+                4 -> R.drawable.doctorimage
+                5 -> R.drawable.doctorimage
+                else -> R.drawable.ic_launcher_foreground
+            }
+            val specialistname = arrayOf("Tapasvi", "Parth", "Dhruv", "John", "Morgan", "Stella")
+            val speciality = arrayOf("Dentist", "Hygienist", "Hygienist", "Dentist", "Dentist", "Dentist")
+            val clinicname = arrayOf("AppleCare", "AppleCare", "Nirvana", "Civic", "Civic", "Civic")
 
-            val specialistname = arrayOf("Mango", "Banana", "Pineapple", "Apple", "Orange", "WaterMelon")
-            val speciality = arrayOf("Mango", "Banana", "Pineapple", "Apple", "Orange", "WaterMelon")
-            val clinicname = arrayOf("Mango", "Banana", "Pineapple", "Apple", "Orange", "WaterMelon")
 
-            val item = SpecialistList(specialistname[i], speciality[i], clinicname[i])
+            val item = SpecialistList(drawable, specialistname[i], speciality[i], clinicname[i])
             list += item
         }
         return list
