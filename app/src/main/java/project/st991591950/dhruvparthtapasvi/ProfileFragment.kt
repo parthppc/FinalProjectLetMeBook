@@ -59,6 +59,7 @@ class ProfileFragment : Fragment() {
         if (user != null) {
             binding.userName.text = user.displayName.toString()
             binding.userEmail.text = user.email.toString()
+            binding.loginuserName.text = user.displayName.toString()
         }
         else{
             binding.userName.text = "username"
