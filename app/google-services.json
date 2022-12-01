@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "252294434301",
+    "project_id": "letmebookap-b5fd0",
+    "storage_bucket": "letmebookap-b5fd0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252294434301:android:6066b945797929b0875d94",
+        "android_client_info": {
+          "package_name": "project.st991591950.dhruvparthtapasvi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252294434301-adsb3pivq89qb4n998vf41pgoa03a55g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQK9Qy29v0GJXrDDG9_jaK7FUSN7LgwYI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252294434301-adsb3pivq89qb4n998vf41pgoa03a55g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

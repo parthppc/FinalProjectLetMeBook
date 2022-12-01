@@ -9,4 +9,10 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="fact_type_android">Android</string>
+    <string name="fact_type_california">California</string>
+
+    <!--Shared Preference Keys -->
+    <string name="preference_fact_type_key">fact_type_pref</string>
 </resources>
