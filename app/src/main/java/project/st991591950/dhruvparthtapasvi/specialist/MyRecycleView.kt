@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.specialist_item.view.*
 import project.st991591950.dhruvparthtapasvi.R
 
-class MyRecycleView (private val sampleList: List<SpecialistList>) : RecyclerView.Adapter <MyRecycleView.MyViewHolder>() {
+class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter <MyRecycleView.MyViewHolder>() {
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val specialistNameView: TextView = itemView.textView_specialistName

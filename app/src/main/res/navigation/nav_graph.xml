@@ -25,6 +25,13 @@
         <action
             android:id="@+id/action_homeFragment_to_specialistFragment"
             app:destination="@id/specialistFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myAppointmentsFragment"
+            app:destination="@id/myAppointmentsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/specialistFragment"
@@ -32,7 +39,6 @@
         android:label="fragment_specialist"
         tools:layout="@layout/fragment_specialist" />
 
-        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/adminFragment"
         android:name="project.st991591950.dhruvparthtapasvi.AdminFragment"
@@ -47,5 +53,10 @@
         android:name="project.st991591950.dhruvparthtapasvi.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/myAppointmentsFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment"
+        android:label="fragment_my_appointments"
+        tools:layout="@layout/fragment_my_appointments" />
 
 </navigation>
