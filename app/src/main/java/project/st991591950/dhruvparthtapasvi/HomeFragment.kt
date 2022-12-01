@@ -5,10 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_home.*
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
 
 
@@ -20,6 +22,8 @@ class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
+
+    //private val specialistbutton: Button = button_Specialists
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -48,10 +52,17 @@ class HomeFragment : Fragment() {
             FirebaseAuth.getInstance().signOut();
             findNavController().navigate(R.id.loginFragment)
         }
+
+        binding.buttonSpecialists.setOnClickListener{
+
+            findNavController().navigate(R.id.action_homeFragment_to_specialistFragment)
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
+
+
 }
