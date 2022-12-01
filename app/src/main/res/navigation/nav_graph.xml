@@ -28,6 +28,10 @@
         <action
             android:id="@+id/action_homeFragment_to_myAppointmentsFragment"
             app:destination="@id/myAppointmentsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/specialistFragment"
@@ -35,7 +39,6 @@
         android:label="fragment_specialist"
         tools:layout="@layout/fragment_specialist" />
 
-      
     <fragment
         android:id="@+id/adminFragment"
         android:name="project.st991591950.dhruvparthtapasvi.AdminFragment"

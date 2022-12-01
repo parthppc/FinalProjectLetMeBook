@@ -5,12 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_home.*
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
 
 
@@ -47,7 +43,7 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button2.setOnClickListener{
+        binding.btnLogout.setOnClickListener{
 
             FirebaseAuth.getInstance().signOut();
             findNavController().navigate(R.id.loginFragment)
@@ -58,8 +54,14 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.action_homeFragment_to_specialistFragment)
         }
 
+
         binding.buttonMyAppointments.setOnClickListener{
             findNavController().navigate(R.id.action_homeFragment_to_myAppointmentsFragment)
+}
+        binding.profilebtn.setOnClickListener{
+
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+
         }
     }
 

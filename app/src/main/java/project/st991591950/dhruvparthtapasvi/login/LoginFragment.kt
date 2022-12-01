@@ -40,7 +40,7 @@ class LoginFragment : Fragment() {
 
         val textView: TextView = binding.textWelcome
 
-        textView.text = "Welcome to LetMeBoot"
+        textView.text = "Welcome to LetMeBooK"
 
         return binding.root
 
