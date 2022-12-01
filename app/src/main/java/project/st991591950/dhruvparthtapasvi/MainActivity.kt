@@ -9,7 +9,11 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import project.st991591950.dhruvparthtapasvi.databinding.ActivityMainBinding
+import project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment
+import project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +36,32 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+//        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNav)
+//        bottomNavigationView.setOnItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.nav_home -> {
+//                    loadFragment(HomeFragment())
+//
+//                }
+//                R.id.nav_specialists -> {
+//                    loadFragment(SpecialistFragment())
+//
+//                }
+//                R.id.nav_myappointments -> {
+//                    loadFragment(MyAppointmentsFragment())
+//
+//                }
+//            }
+//            true
+//        }
+
     }
+//    private  fun loadFragment(fragment: Fragment){
+//        val transaction = supportFragmentManager.beginTransaction()
+//        transaction.replace(R.id.container,fragment)
+//        transaction.addToBackStack(null)
+//        transaction.commit()
+//    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
