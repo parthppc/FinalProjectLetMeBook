@@ -43,8 +43,8 @@ class HomeFragment : Fragment() {
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnLogout.setOnClickListener{
 
+        binding.btnLogout.setOnClickListener{
             FirebaseAuth.getInstance().signOut();
             findNavController().navigate(R.id.loginFragment)
         }
