@@ -15,4 +15,8 @@
 
     <!--Shared Preference Keys -->
     <string name="preference_fact_type_key">fact_type_pref</string>
+    <!-- TODO: Remove or change this placeholder text -->
+
+    <string name="hello_blank_fragment">Hello Admin fragment</string>
+
 </resources>
