@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_home.*
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
 
 
@@ -27,7 +27,6 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +42,8 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
+       // binding.bottomNavigation.setOnNavigationItemSelectedListener {  }
+
         return root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +58,13 @@ class HomeFragment : Fragment() {
 
             findNavController().navigate(R.id.action_homeFragment_to_specialistFragment)
         }
+
+
+
+
     }
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()
