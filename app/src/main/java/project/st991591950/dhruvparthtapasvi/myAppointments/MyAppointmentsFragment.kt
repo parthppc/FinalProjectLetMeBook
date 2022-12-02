@@ -6,12 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_my_appointments.*
 import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.specialist.MyRecycleView
 
+const val TAG ="FIRESTORE"
 
 class MyAppointmentsFragment : Fragment() {
+
+    //private var binding : ActivityMainBinding? = null
+    val fireStoreDatabase = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
