@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
+
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentProfileBinding
 
 
@@ -51,11 +52,7 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val user = FirebaseAuth.getInstance().currentUser
-        /* if (user != null) {
-             // Name, email address etc
-             val name = user.displayName
-             val email = user.email
-         }*/
+
         if (user != null) {
             binding.userName.text = user.displayName.toString()
             binding.userEmail.text = user.email.toString()
@@ -63,7 +60,7 @@ class ProfileFragment : Fragment() {
         }
         else{
             binding.userName.text = "username"
-            binding.userEmail.text = "username"
+            binding.userEmail.text = "userEmail"
         }
     }
 
