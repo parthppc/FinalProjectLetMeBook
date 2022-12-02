@@ -31,13 +31,20 @@
         <action
             android:id="@+id/action_homeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_bookAppointmentFragment"
+            app:destination="@id/bookAppointmentFragment" />
 
     </fragment>
     <fragment
         android:id="@+id/specialistFragment"
         android:name="project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment"
         android:label="fragment_specialist"
-        tools:layout="@layout/fragment_specialist" />
+        tools:layout="@layout/fragment_specialist" >
+        <action
+            android:id="@+id/action_specialistFragment_to_bookAppointmentFragment"
+            app:destination="@id/bookAppointmentFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/adminFragment"
@@ -58,5 +65,10 @@
         android:name="project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment"
         android:label="fragment_my_appointments"
         tools:layout="@layout/fragment_my_appointments" />
+    <fragment
+        android:id="@+id/bookAppointmentFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment"
+        android:label="fragment_book_appointment"
+        tools:layout="@layout/fragment_book_appointment" />
 
 </navigation>
