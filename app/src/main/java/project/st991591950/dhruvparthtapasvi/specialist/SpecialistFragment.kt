@@ -1,28 +1,35 @@
 package project.st991591950.dhruvparthtapasvi.specialist
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_specialist.*
+import kotlinx.android.synthetic.main.specialist_item.*
 import project.st991591950.dhruvparthtapasvi.R
+import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
+import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
+import project.st991591950.dhruvparthtapasvi.databinding.FragmentSpecialistBinding
 
 class SpecialistFragment : Fragment() {
 
     private var layoutManager: RecyclerView.LayoutManager? = null
     private var adapter: RecyclerView.Adapter<MyRecycleView.MyViewHolder>? = null
 
+//    private var _binding: FragmentSpecialistBinding? = null
+//    private val binding get() = _binding!!
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val ourList = generateDummyList(6)
 
-        //recycleView.adapter = MyRecycleView(ourList)
-        //recycleView.layoutManager = LinearLayoutManager(this)
-        //recycleView.setHasFixedSize(true)
     }
 
     override fun onCreateView(
@@ -31,8 +38,14 @@ class SpecialistFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_specialist, container, false)
+
+//        _binding = FragmentSpecialistBinding.inflate(inflater, container, false)
+//        val root: View = binding.root
+//
+//        return root
     }
 
+    @SuppressLint("ResourceType")
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
         super.onViewCreated(itemView, savedInstanceState)
         recycleView.apply {
@@ -42,6 +55,12 @@ class SpecialistFragment : Fragment() {
             // set the custom adapter to the RecyclerView
             adapter = MyRecycleView(generateDummyList(6))
         }
+//        binding.buttonBook.setOnClickListener{
+//
+//            findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
+//        }
+
+
     }
 
     private fun generateDummyList(size: Int): List<SpecialistList> {
@@ -59,7 +78,6 @@ class SpecialistFragment : Fragment() {
             val specialistname = arrayOf("Tapasvi", "Parth", "Dhruv", "John", "Morgan", "Stella")
             val speciality = arrayOf("Dentist", "Hygienist", "Hygienist", "Dentist", "Dentist", "Dentist")
             val clinicname = arrayOf("AppleCare", "AppleCare", "Nirvana", "Civic", "Civic", "Civic")
-
 
             val item = SpecialistList(drawable, specialistname[i], speciality[i], clinicname[i])
             list += item

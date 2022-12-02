@@ -1,17 +1,23 @@
 package project.st991591950.dhruvparthtapasvi.specialist
 
+import android.app.Activity
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.RelativeLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.specialist_item.view.*
 import project.st991591950.dhruvparthtapasvi.R
 
 class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter <MyRecycleView.MyViewHolder>() {
+
+
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val imageView: ImageView = itemView.imageView
@@ -19,6 +25,8 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
         val specialityView: TextView = itemView.textView_speciality
         val clinicNameView: TextView = itemView.textView_clinicName
         val specialistcardView:RelativeLayout = itemView.specialistCard
+
+        val viewSpecialist: Button = itemView.button_ViewSpecialist
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -38,8 +46,19 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
         holder.specialistcardView.setOnClickListener{
             Toast.makeText(holder.specialistcardView.context,
                 "You selected " +currentItem.specialistName+ ".", Toast.LENGTH_SHORT).show()
+
+            //Navigation.findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
+
+        }
+
+        holder.viewSpecialist.setOnClickListener{
+
         }
     }
 
+
     override fun getItemCount() = sampleList.size
+
 }
+
+
