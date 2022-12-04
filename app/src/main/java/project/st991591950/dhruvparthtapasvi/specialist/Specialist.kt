@@ -1,3 +1,3 @@
 package project.st991591950.dhruvparthtapasvi.specialist
 
-class SpecialistList (val imageResource: Int, val specialistName: String, val speciality: String, val clinicName: String)
+class SpecialistList ( val dName: String? = null, val dSpeciality: String? = null, val clinicName: String? = null)
