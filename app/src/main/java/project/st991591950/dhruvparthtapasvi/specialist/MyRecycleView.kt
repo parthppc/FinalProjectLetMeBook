@@ -38,14 +38,14 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
 
         val currentItem = sampleList[position]
 
-        holder.imageView.setImageResource(currentItem.imageResource)
-        holder.specialistNameView.text = currentItem.specialistName
-        holder.specialityView.text = currentItem.speciality
+       // holder.imageView.setImageResource(currentItem.imageResource)
+        holder.specialistNameView.text = currentItem.dName
+        holder.specialityView.text = currentItem.dSpeciality
         holder.clinicNameView.text = currentItem.clinicName
 
         holder.specialistcardView.setOnClickListener{
             Toast.makeText(holder.specialistcardView.context,
-                "You selected " +currentItem.specialistName+ ".", Toast.LENGTH_SHORT).show()
+                "You selected " +currentItem.dName+ ".", Toast.LENGTH_SHORT).show()
 
             //Navigation.findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
 
