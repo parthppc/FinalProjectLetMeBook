@@ -15,6 +15,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         val doctorNameView: TextView = itemView.dName
         val patientReasonView: TextView = itemView.reason
         val appointmentTitleView: TextView = itemView.title
+        val datetime: TextView = itemView.editTextDate
 
 
     }
@@ -30,6 +31,9 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         holder.doctorNameView.text = currentAppointment.sName
         holder.patientReasonView.text = currentAppointment.reason
         holder.appointmentTitleView.text = currentAppointment.title
+        holder.datetime.text = currentAppointment.dateTime?.toDate().toString()
+
+
 
 
     }
