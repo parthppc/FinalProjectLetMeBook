@@ -16,7 +16,7 @@ import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
 
 
-class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter <MyRecycleView.MyViewHolder>() {
+class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter<MyRecycleView.MyViewHolder>() {
 
 
 

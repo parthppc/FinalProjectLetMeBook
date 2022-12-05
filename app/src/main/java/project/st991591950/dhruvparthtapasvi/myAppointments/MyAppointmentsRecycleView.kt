@@ -12,7 +12,9 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
     class MyAppointmentsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        val patientNameView: TextView = itemView.date
+        val doctorNameView: TextView = itemView.dName
+        val patientReasonView: TextView = itemView.reason
+        val appointmentTitleView: TextView = itemView.title
 
 
     }
@@ -25,7 +27,10 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
     override fun onBindViewHolder(holder: MyAppointmentsViewHolder, position: Int) {
         val currentAppointment = appointmentList[position]
 
-        holder.patientNameView.text = currentAppointment.patientName
+        holder.doctorNameView.text = currentAppointment.sName
+        holder.patientReasonView.text = currentAppointment.reason
+        holder.appointmentTitleView.text = currentAppointment.title
+
 
     }
 

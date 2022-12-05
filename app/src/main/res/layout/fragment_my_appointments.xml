@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".myAppointments.MyAppointmentsFragment">
+    tools:context="project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment">
 
     <TextView
         android:id="@+id/textView1"
@@ -17,7 +17,7 @@
         android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleViewMyAppointments"
+        android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
