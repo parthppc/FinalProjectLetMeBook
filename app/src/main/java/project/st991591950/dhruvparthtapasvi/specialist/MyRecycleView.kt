@@ -1,14 +1,21 @@
 package project.st991591950.dhruvparthtapasvi.specialist
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.net.toUri
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.specialist_item.view.*
@@ -21,11 +28,12 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
 
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-        val imageView: ImageView = itemView.imageView
+        val imageView: WebView = itemView.imageView
         val specialistNameView: TextView = itemView.textView_specialistName
         val specialityView: TextView = itemView.textView_speciality
         val clinicNameView: TextView = itemView.textView_clinicName
         val specialistcardView:RelativeLayout = itemView.specialistCard
+
 
        // val viewSpecialist: Button = itemView.button_ViewSpecialist
     }
@@ -45,21 +53,23 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
 
         val currentItem = sampleList[position]
 
-       // holder.imageView.setImageResource(currentItem.imageResource)
+       holder.imageView.webViewClient = WebViewClient()
+        holder.imageView.loadUrl(currentItem.photoUrl.toString())
         holder.specialistNameView.text = currentItem.dName
         holder.specialityView.text = currentItem.dSpeciality
         holder.clinicNameView.text = currentItem.clinicName
 
-        holder.specialistcardView.setOnClickListener{
-            Toast.makeText(holder.specialistcardView.context,
-                "You selected " +currentItem.dName+ ".", Toast.LENGTH_SHORT).show()
 
-            //Navigation.findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
-
-        }
+//        holder.specialistcardView.setOnClickListener{
+//            Toast.makeText(holder.specialistcardView.context,
+//                "You selected " +currentItem.dName+ ".", Toast.LENGTH_SHORT).show()
+//
+//            //Navigation.findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
+//
+//        }
 
         holder.specialistcardView.setOnClickListener(View.OnClickListener { view -> //Here goes your desired onClick behaviour. Like:
-            Toast.makeText(view.context, "You have clicked " + currentItem.dName, Toast.LENGTH_SHORT)
+            Toast.makeText(view.context, "You have clicked " + currentItem.photoUrl, Toast.LENGTH_SHORT)
                 .show() //you can add data to the tag of your cardview in onBind... and retrieve it here with with.getTag().toString()..
             //You can change the fragment, something like this, not tested, please correct for your desired output:
             val activity = view.context as AppCompatActivity
