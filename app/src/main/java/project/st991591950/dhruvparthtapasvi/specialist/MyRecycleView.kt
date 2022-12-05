@@ -1,19 +1,16 @@
 package project.st991591950.dhruvparthtapasvi.specialist
 
-import android.app.Activity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import kotlinx.android.synthetic.main.specialist_item.view.*
 import project.st991591950.dhruvparthtapasvi.R
+import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
+import project.st991591950.dhruvparthtapasvi.databinding.FragmentSpecialistBinding
+
 
 class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter <MyRecycleView.MyViewHolder>() {
 
@@ -26,13 +23,19 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
         val clinicNameView: TextView = itemView.textView_clinicName
         val specialistcardView:RelativeLayout = itemView.specialistCard
 
-        val viewSpecialist: Button = itemView.button_ViewSpecialist
+       // val viewSpecialist: Button = itemView.button_ViewSpecialist
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.specialist_item, parent, false)
+
+      //  _binding = FragmentSpecialistBinding.inflate(inflater, container, false)
+       // val root: View = binding.root
+
         return MyViewHolder(itemView)
     }
+
+
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
@@ -51,9 +54,19 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
 
         }
 
-        holder.viewSpecialist.setOnClickListener{
+        holder.specialistcardView.setOnClickListener(View.OnClickListener { view -> //Here goes your desired onClick behaviour. Like:
+            Toast.makeText(view.context, "You have clicked " + view.id, Toast.LENGTH_SHORT)
+                .show() //you can add data to the tag of your cardview in onBind... and retrieve it here with with.getTag().toString()..
+            //You can change the fragment, something like this, not tested, please correct for your desired output:
+            val activity = view.context as AppCompatActivity
+            val myFragment = BookAppointmentFragment()
 
-        }
+
+            //Create a bundle to pass data, add data, set the bundle to your fragment and:
+            activity.supportFragmentManager.beginTransaction()
+                .replace(R.id.cardOpenGallery, myFragment).addToBackStack(null).commit()
+
+        })
     }
 
 
