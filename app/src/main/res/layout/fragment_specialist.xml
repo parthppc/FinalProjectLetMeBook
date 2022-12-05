@@ -2,7 +2,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment">
+    tools:context="project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment"
+    android:id="@+id/cardOpenGallery">
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -28,13 +30,5 @@
         android:layout_marginEnd="0dp"
         android:layout_marginBottom="57dp"
         tools:listitem="@layout/specialist_item" />
-
-    <Button
-        android:id="@+id/button_Book"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Book" />
 
 </RelativeLayout>

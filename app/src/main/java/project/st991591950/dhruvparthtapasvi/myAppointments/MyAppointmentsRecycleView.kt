@@ -12,7 +12,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
     class MyAppointmentsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        val patientNameView: TextView = itemView.patientName
+        val patientNameView: TextView = itemView.date
 
 
     }
