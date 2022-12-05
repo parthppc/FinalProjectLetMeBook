@@ -150,7 +150,7 @@
             android:text="Book Appointment" />
 
         <TextView
-            android:id="@+id/textView_SpecialistName"
+            android:id="@+id/SpecialistName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -160,7 +160,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView_Speciality"
+            android:id="@+id/textViewSpeciality"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
@@ -170,7 +170,7 @@
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/textView_ClinicName"
+            android:id="@+id/textViewClinicName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
