@@ -1,15 +1,16 @@
 package project.st991591950.dhruvparthtapasvi.bookappointment
 
+import android.app.DatePickerDialog
+import android.app.DatePickerDialog.OnDateSetListener
+import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
-import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentBookAppointmentBinding
-import project.st991591950.dhruvparthtapasvi.databinding.FragmentSpecialistBinding
+import java.util.*
 
 
 class BookAppointmentFragment : Fragment() {
@@ -17,6 +18,8 @@ class BookAppointmentFragment : Fragment() {
     private var _binding: FragmentBookAppointmentBinding? = null
     private val binding get() = _binding!!
 
+    val myCalendar: Calendar = Calendar.getInstance()
+   // var editText: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,29 @@ class BookAppointmentFragment : Fragment() {
         binding.textViewClinicName.text = clinicName.toString()
         //Toast.makeText( BookAppointmentFragment().context, "abc.toString()",Toast.LENGTH_SHORT).show();
 
+        val date =
+            OnDateSetListener { view, year, month, day ->
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = month
+                myCalendar[Calendar.DAY_OF_MONTH] = day
+                updateLabel()
+            }
 
+        binding.editTextDate.setOnClickListener(View.OnClickListener {
+            BookAppointmentFragment().context?.let { it1 ->
+                DatePickerDialog(
+                    it1, date,
+                    myCalendar[Calendar.YEAR],
+                    myCalendar[Calendar.MONTH], myCalendar[Calendar.DAY_OF_MONTH]
+                ).show()
+            }
+        })
+    }
+
+    private fun updateLabel() {
+        val myFormat = "MM/dd/yy"
+        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        binding.editTextDate.setText(dateFormat.format(myCalendar.time))
     }
 
 

@@ -79,6 +79,10 @@
             android:layout_marginTop="350dp"
             android:ems="10"
             android:inputType="date"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
             android:textSize="16sp" />
 
         <TextView
