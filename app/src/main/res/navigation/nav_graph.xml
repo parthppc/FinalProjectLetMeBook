@@ -48,7 +48,7 @@
 
     <fragment
         android:id="@+id/adminFragment"
-        android:name="project.st991591950.dhruvparthtapasvi.AdminFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.admin.AdminFragment"
         android:label="fragment_admin"
         tools:layout="@layout/fragment_admin" >
         <action
