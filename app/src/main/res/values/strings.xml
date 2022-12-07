@@ -19,4 +19,8 @@
 
     <string name="hello_blank_fragment">Hello Admin fragment</string>
 
+    <string name="selected_item">Selected Time:</string>
+
+
+
 </resources>
