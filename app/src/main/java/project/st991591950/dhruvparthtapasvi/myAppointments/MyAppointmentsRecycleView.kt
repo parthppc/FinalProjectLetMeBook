@@ -28,6 +28,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         val patientReasonView: TextView = itemView.reason
         val appointmentTimeView: TextView = itemView.editTextTime
         val date: TextView = itemView.editTextDate
+        val speciality: TextView = itemView.Speciality
 
         val cancelbtn: Button = itemView.cancelbtn
         val reschedulebtn: Button = itemView.reschedulebtn
@@ -47,6 +48,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         holder.patientReasonView.text = currentAppointment.reason
         holder.appointmentTimeView.text = currentAppointment.appointmentTime
         holder.date.text = currentAppointment.appointmentDate
+        holder.speciality.text = currentAppointment.doctorSpeciality
 
 //        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
 //        val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate.toString())
