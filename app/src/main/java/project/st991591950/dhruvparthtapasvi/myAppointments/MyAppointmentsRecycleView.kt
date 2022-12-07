@@ -26,7 +26,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
         val doctorNameView: TextView = itemView.dName
         val patientReasonView: TextView = itemView.reason
-        val appointmentTitleView: TextView = itemView.title
+        val appointmentTimeView: TextView = itemView.time
         val datetime: TextView = itemView.editTextDate
 
         val cancelbtn: Button = itemView.cancelbtn
@@ -45,47 +45,47 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
         holder.doctorNameView.text = currentAppointment.sName
         holder.patientReasonView.text = currentAppointment.reason
-        holder.appointmentTitleView.text = currentAppointment.title
-        holder.datetime.text = currentAppointment.dateTime?.toDate().toString()
+        holder.appointmentTimeView.text = currentAppointment.appointmentTime
+        holder.datetime.text = currentAppointment.appointmentDate
 
-        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
-        val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.dateTime?.toDate())
-
-        //holder.datetime.text = currentDate
-
-        if (firebaseDate.compareTo(currentDate) > 0) {
-            //Log.i("app", "Date1 is after Date2");
-        } else if (firebaseDate.compareTo(currentDate) < 0) {
-           // Log.i("app", "Date1 is before Date2");
-            holder.cancelbtn.isEnabled = false
-            holder.reschedulebtn.isEnabled = false
-        } else if (firebaseDate.compareTo(currentDate) == 0) {
-          //  Log.i("app", "Date1 is equal to Date2");
-        }
-
-        holder!!.cancelbtn.setOnClickListener(){
-            var title: String = currentAppointment.title.toString()
-
-
-            val query = fireStoreDatabase.collection("MyAppointments")
-                .whereEqualTo("title", title)
-                .get()
-
-            query.addOnSuccessListener {
-                for(document in it){
-                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
-                        .addOnSuccessListener {
-                            Log.d(TAG," document deleted with")
-                        }
-
-
-                }
-            }
-
-            query.addOnFailureListener{
-             //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
-            }
-        }
+//        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+//        val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate.toString())
+//
+//        //holder.datetime.text = currentDate
+//
+//        if (firebaseDate.compareTo(currentDate) > 0) {
+//            //Log.i("app", "Date1 is after Date2");
+//        } else if (firebaseDate.compareTo(currentDate) < 0) {
+//           // Log.i("app", "Date1 is before Date2");
+//            holder.cancelbtn.isEnabled = false
+//            holder.reschedulebtn.isEnabled = false
+//        } else if (firebaseDate.compareTo(currentDate) == 0) {
+//          //  Log.i("app", "Date1 is equal to Date2");
+//        }
+//
+//        holder!!.cancelbtn.setOnClickListener(){
+//            var title: String = currentAppointment.appointmentTime.toString()
+//
+//
+//            val query = fireStoreDatabase.collection("MyAppointments")
+//                .whereEqualTo("title", title)
+//                .get()
+//
+//            query.addOnSuccessListener {
+//                for(document in it){
+//                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
+//                        .addOnSuccessListener {
+//                            Log.d(TAG," document deleted with")
+//                        }
+//
+//
+//                }
+//            }
+//
+//            query.addOnFailureListener{
+//             //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
 
     }
