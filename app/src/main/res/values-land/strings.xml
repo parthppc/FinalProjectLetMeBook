@@ -4,4 +4,5 @@
     <string name="home_fragment_label">Home</string>
     <string name="login_fragment_label">Login</string>
     <string name="profile_fragment_label">Profile</string>
+    <string name="admin_fragment_label">Admin Console</string>
 </resources>

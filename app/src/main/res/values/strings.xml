@@ -23,7 +23,7 @@
     <string name="profile_fragment_label">Profile</string>
 
     <string name="selected_item">Selected Time:</string>
-
+    <string name="admin_fragment_label">Admin Console</string>
 
 
 </resources>
