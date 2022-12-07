@@ -1,5 +1,6 @@
 package project.st991591950.dhruvparthtapasvi.login
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.viewModels
@@ -29,6 +32,7 @@ class LoginFragment : Fragment() {
 
     private val binding get() = _binding!!
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,6 +43,8 @@ class LoginFragment : Fragment() {
         val textView: TextView = binding.textWelcome
 
         textView.text = "Welcome to Dental Appointment Booking System"
+
+        setActivityTitle(R.string.login_fragment_label)
 
         return binding.root
 
@@ -101,6 +107,10 @@ class LoginFragment : Fragment() {
                 providers
             ).build(), SIGN_IN_RESULT_CODE
         )
+    }
+
+    private fun Fragment.setActivityTitle(@StringRes id: Int) {
+        (activity as? AppCompatActivity?)?.supportActionBar?.title = getString(id)
     }
 
 }
