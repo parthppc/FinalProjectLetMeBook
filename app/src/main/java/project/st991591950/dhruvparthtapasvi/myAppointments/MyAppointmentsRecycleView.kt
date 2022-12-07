@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.myappointments_item.view.*
@@ -21,6 +22,11 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
     val fireStoreDatabase = FirebaseFirestore.getInstance()
 
+    val calendar = Calendar.getInstance()
+
+    val thisYear = calendar[Calendar.YEAR]
+    var thisMonth = calendar[Calendar.MONTH]
+    val thisDay = calendar[Calendar.DAY_OF_MONTH]
 
     class MyAppointmentsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -50,44 +56,100 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         holder.date.text = currentAppointment.appointmentDate
         holder.speciality.text = currentAppointment.doctorSpeciality
 
-//        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
-//        val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate.toString())
+        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
+        //val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate)
 //
-//        //holder.datetime.text = currentDate
-//
-//        if (firebaseDate.compareTo(currentDate) > 0) {
+       // holder.date.text = currentDate
+        if (thisMonth == 12){
+            thisMonth = 1
+        }
+        else
+            thisMonth = thisMonth+1
+
+
+
+        //Log.d(TAG, "$ thisDay : $thisDay")
+
+        val substringDay = currentAppointment.appointmentDate?.subSequence(0, 1)
+        val substringCurrentMonth = currentDate.subSequence(3,5)
+
+
+        if(substringDay == "0"){
+            val substringfirebaseDate = currentAppointment.appointmentDate?.subSequence(3, 5)
+
+            val firebaseDate = substringfirebaseDate.toString().toIntOrNull()
+           // val todayMonth = substringCurrentMonth.toString().toIntOrNull()
+
+            if (firebaseDate != null) {
+                if(firebaseDate < thisMonth){
+
+                    holder.cancelbtn.isEnabled = false
+                    holder.reschedulebtn.isEnabled = false
+                }
+
+
+            }
+
+
+        }
+
+        else{
+            val substringfirebaseDate = currentAppointment.appointmentDate?.subSequence(2, 4)
+
+            val firebaseDate = substringfirebaseDate.toString().toIntOrNull()
+           // val todayMonth = substringCurrentMonth.toString().toIntOrNull()
+
+            if (firebaseDate != null) {
+                if(firebaseDate < thisMonth){
+                    holder.cancelbtn.isEnabled = false
+                    holder.reschedulebtn.isEnabled = false
+                }
+
+
+            }
+        }
+
+//        if (currentAppointment.doctorSpeciality!! > currentDate) {
 //            //Log.i("app", "Date1 is after Date2");
-//        } else if (firebaseDate.compareTo(currentDate) < 0) {
+//            holder.cancelbtn.isEnabled = false
+//            holder.reschedulebtn.isEnabled = false
+//        } else if (currentAppointment.doctorSpeciality < currentDate) {
 //           // Log.i("app", "Date1 is before Date2");
 //            holder.cancelbtn.isEnabled = false
 //            holder.reschedulebtn.isEnabled = false
-//        } else if (firebaseDate.compareTo(currentDate) == 0) {
+//        } else if (currentAppointment.doctorSpeciality.compareTo(currentDate) == 0) {
 //          //  Log.i("app", "Date1 is equal to Date2");
 //        }
 //
-//        holder!!.cancelbtn.setOnClickListener(){
-//            var title: String = currentAppointment.appointmentTime.toString()
-//
-//
-//            val query = fireStoreDatabase.collection("MyAppointments")
-//                .whereEqualTo("title", title)
-//                .get()
-//
-//            query.addOnSuccessListener {
-//                for(document in it){
-//                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
-//                        .addOnSuccessListener {
-//                            Log.d(TAG," document deleted with")
-//                        }
-//
-//
-//                }
-//            }
-//
-//            query.addOnFailureListener{
-//             //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
-//            }
-//        }
+        holder!!.cancelbtn.setOnClickListener(){
+            var title: String = currentAppointment.reason.toString()
+
+
+            val query = fireStoreDatabase.collection("MyAppointments")
+                .whereEqualTo("reason", title)
+                .get()
+
+            query.addOnSuccessListener {
+                for(document in it){
+                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
+                        .addOnSuccessListener {
+                            Log.d(TAG," document deleted with")
+                           // Toast.makeText(MyAppointmentsRecycleView, "Appoinment Canceled", Toast.LENGTH_SHORT)
+                            //    .show()
+                            //findNavController().navigate(R.id.myAppointmentsFragment)
+                        }
+
+
+                }
+
+            }
+            //notifyItemRemoved(fireStoreDatabase)
+            query.addOnFailureListener{
+             //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
+            }
+
+           // findNavController().navigate(R.id.myAppointmentsFragment)
+        }
 
 
     }
