@@ -86,6 +86,7 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
             bundle.putString("doctorName",currentItem.dName)
             bundle.putString("speciality",currentItem.dSpeciality)
             bundle.putString("clinicName",currentItem.clinicName)
+            bundle.putString("photoUrl",currentItem.photoUrl)
 
             myFragment.arguments = bundle;
 
