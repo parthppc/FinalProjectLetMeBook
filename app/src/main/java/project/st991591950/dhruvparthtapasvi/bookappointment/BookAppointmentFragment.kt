@@ -30,7 +30,7 @@ class BookAppointmentFragment : Fragment() {
 
     private var _binding: FragmentBookAppointmentBinding? = null
     private val binding get() = _binding!!
-    lateinit var dateEdt: EditText
+   // lateinit var dateEdt: EditText
     val fireStoreDatabase = FirebaseFirestore.getInstance()
 
     val myCalendar: Calendar = Calendar.getInstance()
@@ -67,6 +67,7 @@ class BookAppointmentFragment : Fragment() {
         //var selectedDate:String = binding!!.editTextDate.text.toString()
 
         var specialistName: String = doctorName.toString()
+        var doctorSpeciality:String = speciality.toString()
 
         val user = FirebaseAuth.getInstance().currentUser
         var patientName: String =""
@@ -82,6 +83,7 @@ class BookAppointmentFragment : Fragment() {
 
         bookedAppointment["sName"] = specialistName
         bookedAppointment["patientName"] = patientName
+        bookedAppointment["doctorSpeciality"]=doctorSpeciality
 
 
 
