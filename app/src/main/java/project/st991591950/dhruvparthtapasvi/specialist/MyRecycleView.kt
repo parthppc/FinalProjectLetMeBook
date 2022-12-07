@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
@@ -54,7 +55,10 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
         val currentItem = sampleList[position]
 
        holder.imageView.webViewClient = WebViewClient()
+        holder.imageView.settings.loadWithOverviewMode = true
+        holder.imageView.settings.useWideViewPort = true
         holder.imageView.loadUrl(currentItem.photoUrl.toString())
+
         holder.specialistNameView.text = currentItem.dName
         holder.specialityView.text = currentItem.dSpeciality
         holder.clinicNameView.text = currentItem.clinicName
