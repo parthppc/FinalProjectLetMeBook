@@ -25,6 +25,8 @@ import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFrag
 
 class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView.Adapter<MyRecycleView.MyViewHolder>() {
 
+
+
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
         val imageView: WebView = itemView.imageView
         val specialistNameView: TextView = itemView.textView_specialistName
