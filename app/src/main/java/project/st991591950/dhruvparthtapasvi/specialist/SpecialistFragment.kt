@@ -7,11 +7,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.fragment_specialist.*
 import kotlinx.android.synthetic.main.specialist_item.*
+import project.st991591950.dhruvparthtapasvi.R
 
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentSpecialistBinding
 
@@ -56,6 +59,8 @@ class SpecialistFragment : Fragment() {
 
         EventChangeListner()
 
+        setActivityTitle(R.string.specialist_fragment_label)
+
         return root
     }
 
@@ -98,6 +103,9 @@ class SpecialistFragment : Fragment() {
         })
     }
 
+    private fun Fragment.setActivityTitle(@StringRes id: Int) {
+        (activity as? AppCompatActivity?)?.supportActionBar?.title = getString(id)
+    }
 
    }
 

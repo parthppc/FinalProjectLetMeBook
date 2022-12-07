@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.viewModels
@@ -39,6 +41,8 @@ class LoginFragment : Fragment() {
         val textView: TextView = binding.textWelcome
 
         textView.text = "Welcome to Dental Appointment Booking System"
+
+        setActivityTitle(R.string.login_fragment_label)
 
         return binding.root
 
@@ -101,6 +105,10 @@ class LoginFragment : Fragment() {
                 providers
             ).build(), SIGN_IN_RESULT_CODE
         )
+    }
+
+    private fun Fragment.setActivityTitle(@StringRes id: Int) {
+        (activity as? AppCompatActivity?)?.supportActionBar?.title = getString(id)
     }
 
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="specialist_fragment_label">Specialists</string>
+    <string name="home_fragment_label">Home</string>
+    <string name="login_fragment_label">Login</string>
+    <string name="profile_fragment_label">Profile</string>
+</resources>

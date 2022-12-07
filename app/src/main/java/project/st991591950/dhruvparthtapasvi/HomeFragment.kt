@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
@@ -39,6 +41,9 @@ class HomeFragment : Fragment() {
 //        homeViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
 //        }
+
+        setActivityTitle(R.string.home_fragment_label)
+
         return root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,5 +75,8 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    private fun Fragment.setActivityTitle(@StringRes id: Int) {
+        (activity as? AppCompatActivity?)?.supportActionBar?.title = getString(id)
+    }
 
 }
