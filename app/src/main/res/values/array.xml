@@ -20,4 +20,14 @@
         <item>@string/fact_type_android</item>
         <item>@string/fact_type_california</item>
     </array>
+    <string-array name="TimeSlots">
+        <item>09:00</item>
+        <item>10:00</item>
+        <item>11:00</item>
+        <item>12:00</item>
+        <item>13:00</item>
+        <item>15:00</item>
+        <item>16:00</item>
+        <item>17:00</item>
+    </string-array>
 </resources>
