@@ -69,6 +69,10 @@
         android:id="@+id/bookAppointmentFragment"
         android:name="project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment"
         android:label="fragment_book_appointment"
-        tools:layout="@layout/fragment_book_appointment" />
+        tools:layout="@layout/fragment_book_appointment" >
+        <action
+            android:id="@+id/action_bookAppointmentFragment_to_specialistFragment"
+            app:destination="@id/specialistFragment" />
+    </fragment>
 
 </navigation>

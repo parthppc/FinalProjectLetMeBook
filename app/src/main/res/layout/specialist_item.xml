@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
-    card_view:cardBackgroundColor="@color/purple_200"
+    card_view:cardBackgroundColor="@color/cardColor"
     android:id="@+id/cardOpenGallery">
 
     <RelativeLayout
