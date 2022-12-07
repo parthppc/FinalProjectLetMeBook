@@ -10,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebViewClient
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.*
@@ -63,6 +64,7 @@ class BookAppointmentFragment : Fragment() {
         var doctorName = mBundle!!.getString("doctorName")
         var clinicName = mBundle!!.getString("clinicName")
         var speciality = mBundle!!.getString("speciality")
+        var photoUrl = mBundle!!.getString("photoUrl")
 
         //var selectedDate:String = binding!!.editTextDate.text.toString()
 
@@ -84,6 +86,11 @@ class BookAppointmentFragment : Fragment() {
         bookedAppointment["sName"] = specialistName
         bookedAppointment["patientName"] = patientName
         bookedAppointment["doctorSpeciality"]=doctorSpeciality
+
+        binding.imageView.webViewClient = WebViewClient()
+        binding.imageView.settings.loadWithOverviewMode = true
+        binding.imageView.settings.useWideViewPort = true
+        binding.imageView.loadUrl(photoUrl.toString())
 
 
 
