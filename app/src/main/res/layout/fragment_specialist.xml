@@ -16,7 +16,8 @@
         android:layout_marginBottom="10dp"
         android:paddingStart="10dp"
         android:text="Dentists"
-        android:textSize="16sp" />
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"

@@ -73,9 +73,8 @@ class MyRecycleView(private val sampleList: List<SpecialistList>) : RecyclerView
 //        }
 
         holder.specialistcardView.setOnClickListener(View.OnClickListener { view -> //Here goes your desired onClick behaviour. Like:
-            Toast.makeText(view.context, "You have clicked " + currentItem.photoUrl, Toast.LENGTH_SHORT)
-                .show() //you can add data to the tag of your cardview in onBind... and retrieve it here with with.getTag().toString()..
-            //You can change the fragment, something like this, not tested, please correct for your desired output:
+            Toast.makeText(view.context, "You have clicked " + currentItem.dName, Toast.LENGTH_SHORT)
+                .show()
             val activity = view.context as AppCompatActivity
             val myFragment = BookAppointmentFragment()
 
