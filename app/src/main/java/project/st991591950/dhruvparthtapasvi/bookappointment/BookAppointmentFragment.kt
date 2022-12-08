@@ -25,13 +25,13 @@ import java.time.LocalTime
 import java.time.format.DateTimeFormatter.ISO_DATE
 import java.time.format.DateTimeFormatter.ofLocalizedTime
 import java.util.*
+
 const val TAG = "FIRESTORE"
 
 class BookAppointmentFragment : Fragment() {
 
     private var _binding: FragmentBookAppointmentBinding? = null
     private val binding get() = _binding!!
-   // lateinit var dateEdt: EditText
     val fireStoreDatabase = FirebaseFirestore.getInstance()
 
     val myCalendar: Calendar = Calendar.getInstance()
@@ -39,9 +39,6 @@ class BookAppointmentFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
-
 
     }
 
@@ -168,7 +165,8 @@ class BookAppointmentFragment : Fragment() {
             }
         }
 
-        binding.buttonBookAppointment.setOnClickListener{
+        //Book appointment button
+        binding.buttonBookAppointment.setOnClickListener(View.OnClickListener {view->
 
             var appointmentReason: String = binding!!.editTextTextMultiLine.text.toString()
             bookedAppointment["reason"] = appointmentReason
@@ -181,7 +179,9 @@ class BookAppointmentFragment : Fragment() {
                 .addOnFailureListener {
                     Log.d(TAG, "error document with ${it}")
                 }
-        }
+
+            Toast.makeText(view.context, "Appointment Booked", Toast.LENGTH_SHORT).show()
+        })
     }
 
 //    @RequiresApi(Build.VERSION_CODES.O)

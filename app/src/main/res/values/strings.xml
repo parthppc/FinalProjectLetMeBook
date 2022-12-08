@@ -24,6 +24,7 @@
 
     <string name="selected_item">Selected Time:</string>
     <string name="admin_fragment_label">Admin Console</string>
+    <string name="myappointments_fragment_label">My Appointments</string>
 
 
 </resources>

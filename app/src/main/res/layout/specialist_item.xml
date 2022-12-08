@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     card_view:cardBackgroundColor="@color/cardColor"
+    card_view:cardCornerRadius="15dp"
     android:id="@+id/cardOpenGallery">
 
     <RelativeLayout
@@ -21,7 +22,8 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp" />
+            android:layout_marginTop="5dp"
+            android:background="@color/white" />
 
         <TextView
             android:id="@+id/textView_specialistName"
@@ -82,7 +84,6 @@
             android:layout_marginTop="95dp"
             android:layout_toEndOf="@+id/imageView"
             android:text="Clinic Name:" />
-
 
 
     </RelativeLayout>
