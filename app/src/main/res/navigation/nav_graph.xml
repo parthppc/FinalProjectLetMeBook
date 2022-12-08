@@ -66,7 +66,10 @@
         android:label="fragment_my_appointments"
         tools:layout="@layout/fragment_my_appointments" >
         <action
-            android:id="@+id/action_myAppointmentsFragment_self2"
+            android:id="@+id/action_myAppointmentsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_myAppointmentsFragment_self"
             app:destination="@id/myAppointmentsFragment" />
     </fragment>
     <fragment
@@ -77,6 +80,9 @@
         <action
             android:id="@+id/action_bookAppointmentFragment_to_specialistFragment"
             app:destination="@id/specialistFragment" />
+        <action
+            android:id="@+id/action_bookAppointmentFragment_to_myAppointmentsFragment"
+            app:destination="@id/myAppointmentsFragment" />
     </fragment>
 
 </navigation>

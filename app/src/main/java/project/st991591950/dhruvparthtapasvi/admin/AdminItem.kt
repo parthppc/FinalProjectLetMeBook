@@ -1,3 +1,8 @@
 package project.st991591950.dhruvparthtapasvi.admin
 
-class AdminList (val patientName: String? = null, val sName: String? = null, val appointmentDate: String? = null,)
+import java.sql.Time
+
+class AdminList (val patientName: String? = null,
+                 val sName: String? = null,
+                 val appointmentDate: String? = null,
+                 val appointmentTime: String? = null)

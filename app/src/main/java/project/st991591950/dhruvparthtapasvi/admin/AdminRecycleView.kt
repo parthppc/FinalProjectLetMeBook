@@ -14,6 +14,7 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
         val patientNameView: TextView = itemView.textView_patientName
         val specialistNameView: TextView = itemView.textView_SpecialistName
         val appointmentDateView: TextView = itemView.textView_AppointmentDate
+        val appointmentTimeView: TextView = itemView.textView_time
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminViewHolder {
@@ -27,6 +28,7 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
         holder.patientNameView.text = currentPatient.patientName
         holder.specialistNameView.text = currentPatient.sName
         holder.appointmentDateView.text = currentPatient.appointmentDate
+        holder.appointmentTimeView.text = currentPatient.appointmentTime
     }
 
     override fun getItemCount() = adminList.size
