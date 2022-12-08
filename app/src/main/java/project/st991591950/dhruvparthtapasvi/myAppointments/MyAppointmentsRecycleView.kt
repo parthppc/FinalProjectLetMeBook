@@ -8,11 +8,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.myappointments_item.view.*
 import project.st991591950.dhruvparthtapasvi.R
+import project.st991591950.dhruvparthtapasvi.specialist.MyRecycleView
 import java.util.*
 
 
@@ -58,17 +60,14 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
         val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
         //val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate)
-//
+
        // holder.date.text = currentDate
-        if (thisMonth == 12){
+        if (thisMonth == 12) {
             thisMonth = 1
         }
-        else
-            thisMonth = thisMonth+1
-
-
-
-        //Log.d(TAG, "$ thisDay : $thisDay")
+        else {
+            thisMonth = thisMonth + 1
+        }
 
         val substringDay = currentAppointment.appointmentDate?.subSequence(0, 1)
         val substringCurrentMonth = currentDate.subSequence(3,5)
@@ -86,11 +85,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
                     holder.cancelbtn.isEnabled = false
                     holder.reschedulebtn.isEnabled = false
                 }
-
-
             }
-
-
         }
 
         else{
@@ -120,10 +115,11 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 //        } else if (currentAppointment.doctorSpeciality.compareTo(currentDate) == 0) {
 //          //  Log.i("app", "Date1 is equal to Date2");
 //        }
-//
-        holder!!.cancelbtn.setOnClickListener(){
-            var title: String = currentAppointment.reason.toString()
 
+        //this is the Cancel Button
+        holder!!.cancelbtn.setOnClickListener(View.OnClickListener { view->
+
+            var title: String = currentAppointment.reason.toString()
 
             val query = fireStoreDatabase.collection("MyAppointments")
                 .whereEqualTo("reason", title)
@@ -134,22 +130,20 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
                     fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
                         .addOnSuccessListener {
                             Log.d(TAG," document deleted with")
-                           // Toast.makeText(MyAppointmentsRecycleView, "Appoinment Canceled", Toast.LENGTH_SHORT)
-                            //    .show()
+                            Toast.makeText( view.context, "Appointment Canceled", Toast.LENGTH_SHORT).show()
+
                             //findNavController().navigate(R.id.myAppointmentsFragment)
                         }
-
-
                 }
-
             }
             //notifyItemRemoved(fireStoreDatabase)
             query.addOnFailureListener{
              //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
             }
 
-           // findNavController().navigate(R.id.myAppointmentsFragment)
-        }
+
+            // findNavController().navigate(R.id.myAppointmentsFragment)
+        })
 
 
     }

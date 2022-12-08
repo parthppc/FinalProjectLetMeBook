@@ -6,12 +6,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.StringRes
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.*
 import kotlinx.android.synthetic.main.fragment_my_appointments.*
 import kotlinx.android.synthetic.main.myappointments_item.*
+import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentMyAppointmentsBinding
 
 class MyAppointmentsFragment: Fragment() {
@@ -48,6 +51,8 @@ class MyAppointmentsFragment: Fragment() {
 
         EventChangeListner()
 
+        setActivityTitle(R.string.myappointments_fragment_label)
+
         return root
     }
     @SuppressLint("ResourceType")
@@ -82,6 +87,11 @@ class MyAppointmentsFragment: Fragment() {
             }
         })
     }
+
+    private fun Fragment.setActivityTitle(@StringRes id: Int) {
+        (activity as? AppCompatActivity?)?.supportActionBar?.title = getString(id)
+    }
+
 
     //    private fun generateAppointmentList(size: Int): List<MyAppointmentList> {
 //        val list = ArrayList<MyAppointmentList>()
