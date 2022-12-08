@@ -3,7 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment">
+    android:background="@color/white"
+    tools:context="project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment"
+    android:id="@+id/myAppointmentsCardGallery">
 
     <TextView
         android:id="@+id/textView1"

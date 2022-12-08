@@ -8,12 +8,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.viewmodel.viewModelFactory
+import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.fragment_my_appointments.*
 import kotlinx.android.synthetic.main.myappointments_item.view.*
+import project.st991591950.dhruvparthtapasvi.HomeFragment
 import project.st991591950.dhruvparthtapasvi.R
+import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
 import project.st991591950.dhruvparthtapasvi.specialist.MyRecycleView
 import java.util.*
 
@@ -132,7 +138,6 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
                             Log.d(TAG," document deleted with")
                             Toast.makeText( view.context, "Appointment Canceled", Toast.LENGTH_SHORT).show()
 
-                            //findNavController().navigate(R.id.myAppointmentsFragment)
                         }
                 }
             }
@@ -141,8 +146,15 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
              //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
             }
 
+//              val activity = view.context as AppCompatActivity
+//              val myFragment = MyAppointmentsFragment()
+//
+//            val fragmentTransaction: FragmentTransaction = activity.supportFragmentManager.beginTransaction()
+//            fragmentTransaction.replace(R.id.myAppointmentsCardGallery, myFragment).addToBackStack(null).commit()
+//            val ft = activity.supportFragmentManager.beginTransaction()
+//            ft.detach(this).attach(this).commit()
 
-            // findNavController().navigate(R.id.myAppointmentsFragment)
+            //findNavController().navigate(R.id.myAppointmentsFragment)
         })
 
 
