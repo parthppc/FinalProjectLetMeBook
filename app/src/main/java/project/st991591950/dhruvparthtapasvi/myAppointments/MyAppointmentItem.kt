@@ -7,4 +7,6 @@ class MyAppointmentList (val appointmentDate: String? = null,
                          val appointmentTime: String? = null,
                          val doctorSpeciality: String? = null,
                          val reason: String? = null,
-                         val sName: String? = null,)
+                         val sName: String? = null,
+                         val patientName: String? = null
+                         )

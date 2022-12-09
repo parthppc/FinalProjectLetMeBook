@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -14,9 +15,11 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import androidx.navigation.Navigation
 import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.fragment_my_appointments.*
 import kotlinx.android.synthetic.main.myappointments_item.view.*
+import kotlinx.android.synthetic.main.specialist_item.view.*
 import project.st991591950.dhruvparthtapasvi.HomeFragment
 import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
@@ -43,6 +46,8 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         val appointmentTimeView: TextView = itemView.editTextTime
         val date: TextView = itemView.editTextDate
         val speciality: TextView = itemView.Speciality
+        val myAppointmentCardView: RelativeLayout = itemView.myAppointmentsCard
+
 
         val cancelbtn: Button = itemView.cancelbtn
         val reschedulebtn: Button = itemView.reschedulebtn
@@ -57,6 +62,14 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
     override fun onBindViewHolder(holder: MyAppointmentsViewHolder, position: Int) {
         val currentAppointment = appointmentList[position]
+
+        val user = FirebaseAuth.getInstance().currentUser
+        var userName = ""
+        if (user != null) {
+            userName = user.displayName.toString()
+        }
+
+        if(userName == currentAppointment.patientName) {
 
         holder.doctorNameView.text = currentAppointment.sName
         holder.patientReasonView.text = currentAppointment.reason
@@ -154,11 +167,19 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 //            val ft = activity.supportFragmentManager.beginTransaction()
 //            ft.detach(this).attach(this).commit()
 
-            //findNavController().navigate(R.id.myAppointmentsFragment)
+//            val navController = Navigation.findNavController()
+//            navController.run {
+//                popBackStack()
+//                navigate(R.id.adminFragment)
+//            }
+
         })
 
-
+        } else {
+            holder.myAppointmentCardView.visibility = View.GONE
+        }
     }
 
     override fun getItemCount() = appointmentList.size
+
 }
