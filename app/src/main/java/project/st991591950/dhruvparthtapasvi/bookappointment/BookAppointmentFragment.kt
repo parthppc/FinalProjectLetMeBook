@@ -183,7 +183,7 @@ class BookAppointmentFragment : Fragment() {
                     Log.d(TAG, "error document with ${it}")
                 }
 
-            Toast.makeText(view.context, "Appointment Booked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(view.context, "Appointment Booked. \nRefresh Page and Go to My Appointments", Toast.LENGTH_LONG).show()
 
             //findNavController().navigate(R.id.action_bookAppointmentFragment_to_myAppointmentsFragment)
         })

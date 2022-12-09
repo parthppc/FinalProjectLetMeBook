@@ -110,7 +110,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
                     fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
                         .addOnSuccessListener {
                             Log.d(TAG," document deleted with")
-                            Toast.makeText( view.context, "Appointment Canceled", Toast.LENGTH_SHORT).show()
+                            Toast.makeText( view.context, "Appointment Canceled. \nRefresh page and check again!", Toast.LENGTH_LONG).show()
 
                         }
                 }
@@ -137,8 +137,8 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
                 for(document in it){
                     fireStoreDatabase.collection("MyAppointments").document(document.id).update("appointmentTime",holder!!.appointmentTimeView.text.toString())
                         .addOnSuccessListener {
-                            Log.d(TAG," document deleted with")
-                            Toast.makeText( view.context, "Appointment Reschedule", Toast.LENGTH_SHORT).show()
+                            Log.d(TAG,"document updated")
+                            Toast.makeText( view.context, "Appointment Time Rescheduled. \nRefresh page and check again!", Toast.LENGTH_LONG).show()
 
                         }
                 }
