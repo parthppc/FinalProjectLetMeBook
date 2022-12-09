@@ -68,6 +68,7 @@ class MyAppointmentsFragment: Fragment() {
     }
     private  fun EventChangeListner( )
     {
+
         fireStoreDatabase.collection("MyAppointments").addSnapshotListener(object:
             EventListener<QuerySnapshot> {
             override  fun onEvent(
@@ -81,6 +82,7 @@ class MyAppointmentsFragment: Fragment() {
                 for (dc: DocumentChange in value?.documentChanges!!){
                     if (dc.type == DocumentChange.Type.ADDED){
                         list.add(dc.document.toObject(MyAppointmentList::class.java))
+
                     }
                 }
                 myAdapter.notifyDataSetChanged()

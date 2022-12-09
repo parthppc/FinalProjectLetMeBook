@@ -178,6 +178,30 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         } else {
             holder.myAppointmentCardView.visibility = View.GONE
         }
+
+        holder!!.reschedulebtn.setOnClickListener(View.OnClickListener{view->
+            var title: String = currentAppointment.reason.toString()
+
+            val query = fireStoreDatabase.collection("MyAppointments")
+                .whereEqualTo("reason", title)
+                .get()
+
+            query.addOnSuccessListener {
+                for(document in it){
+                    fireStoreDatabase.collection("MyAppointments").document(document.id).update("appointmentTime",holder!!.appointmentTimeView.text.toString())
+                        .addOnSuccessListener {
+                            Log.d(TAG," document deleted with")
+                            Toast.makeText( view.context, "Appointment Reschedule", Toast.LENGTH_SHORT).show()
+
+                        }
+                }
+            }
+            //notifyItemRemoved(fireStoreDatabase)
+            query.addOnFailureListener{
+                //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
+            }
+
+        })
     }
 
     override fun getItemCount() = appointmentList.size
