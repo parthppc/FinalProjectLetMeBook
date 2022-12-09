@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.admin_item.*
 import kotlinx.android.synthetic.main.admin_item.view.*
 import kotlinx.android.synthetic.main.fragment_admin.*
+import kotlinx.android.synthetic.main.myappointments_item.view.*
 import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.myAppointments.TAG
 
@@ -39,6 +40,8 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
         val appointmentTimeView: TextView = itemView.textView_time
         val reasonView: TextView = itemView.textView_reason
         val cancelbtn: Button = itemView.button_Cancel
+        val reschedulebtn: Button = itemView.button_reschedulebtn
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminViewHolder {
@@ -56,7 +59,7 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
         holder.appointmentTimeView.text = currentPatient.appointmentTime
         holder.reasonView.text = currentPatient.reason
 
-        holder!!.cancelbtn.setOnClickListener(View.OnClickListener { view->
+        holder!!.cancelbtn.setOnClickListener(View.OnClickListener { view ->
 
             var title: String = currentPatient.reason.toString()
 
@@ -65,16 +68,57 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
                 .get()
 
             query.addOnSuccessListener {
-                for(document in it){
+                for (document in it) {
                     fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
                         .addOnSuccessListener {
-                            Log.d(TAG," document deleted with")
-                            Toast.makeText( view.context, "Appointment Canceled", Toast.LENGTH_SHORT).show()
+                            Log.d(TAG, " document deleted with")
+                            Toast.makeText(view.context, "Appointment Canceled. \nRefresh page and check again", Toast.LENGTH_SHORT)
+                                .show()
 
                         }
                 }
             }
+        })
 
+            holder!!.reschedulebtn.setOnClickListener(View.OnClickListener { view ->
+                var title: String = currentPatient.reason.toString()
+
+                val query = fireStoreDatabase.collection("MyAppointments")
+                    .whereEqualTo("reason", title)
+                    .get()
+
+                query.addOnSuccessListener {
+                    for (document in it) {
+                        fireStoreDatabase.collection("MyAppointments").document(document.id)
+                            .update("appointmentTime", holder!!.appointmentTimeView.text.toString())
+                            .addOnSuccessListener {
+                                Log.d(TAG, "document updated")
+                                Toast.makeText(
+                                    view.context,
+                                    "Appointment Time Rescheduled.\n Refresh page and check again!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                            }
+                    }
+                }
+
+                query.addOnSuccessListener {
+                    for (document in it) {
+                        fireStoreDatabase.collection("MyAppointments").document(document.id)
+                            .update("appointmentDate", holder!!.appointmentDateView.text.toString())
+                            .addOnSuccessListener {
+                                Log.d(TAG, "document updated")
+                                Toast.makeText(
+                                    view.context,
+                                    "Appointment Date Rescheduled.\n Refresh page and check again!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+
+                            }
+                    }
+                }
+            })
 //            val navController = findNavController(this.adminFragment)
 //            navController.run {
 //                popBackStack()
@@ -84,7 +128,7 @@ class AdminRecycleView (private val adminList: List<AdminList>) : RecyclerView.A
 
 
 
-        })
+
     }
     override fun getItemCount() = adminList.size
 }

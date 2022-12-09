@@ -46,12 +46,12 @@
 
         <EditText
             android:id="@+id/editTextTime"
-            android:layout_width="100dp"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="15dp"
-            android:layout_toEndOf="@+id/editTextDate"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="0dp"
+            android:layout_toEndOf="@+id/textView18"
             android:text="Time" />
 
         <TextView
@@ -116,6 +116,15 @@
             android:text="Cancel"
             android:textSize="10sp" />
 
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/editTextDate"
+            android:text="Time:" />
 
 
     </RelativeLayout>
