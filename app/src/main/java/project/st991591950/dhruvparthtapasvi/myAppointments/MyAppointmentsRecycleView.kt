@@ -77,10 +77,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         holder.date.text = currentAppointment.appointmentDate
         holder.speciality.text = currentAppointment.doctorSpeciality
 
-        val currentDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(Date())
-        //val firebaseDate: String = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(currentAppointment.appointmentDate)
 
-       // holder.date.text = currentDate
         if (thisMonth == 12) {
             thisMonth = 1
         }
@@ -88,52 +85,16 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
             thisMonth = thisMonth + 1
         }
 
-        val substringDay = currentAppointment.appointmentDate?.subSequence(0, 1)
-        val substringCurrentMonth = currentDate.subSequence(3,5)
-
-
-        if(substringDay == "0"){
             val substringfirebaseDate = currentAppointment.appointmentDate?.subSequence(3, 5)
 
             val firebaseDate = substringfirebaseDate.toString().toIntOrNull()
-           // val todayMonth = substringCurrentMonth.toString().toIntOrNull()
-
-            if (firebaseDate != null) {
-                if(firebaseDate < thisMonth){
-
-                    holder.cancelbtn.isEnabled = false
-                    holder.reschedulebtn.isEnabled = false
-                }
-            }
-        }
-
-        else{
-            val substringfirebaseDate = currentAppointment.appointmentDate?.subSequence(2, 4)
-
-            val firebaseDate = substringfirebaseDate.toString().toIntOrNull()
-           // val todayMonth = substringCurrentMonth.toString().toIntOrNull()
 
             if (firebaseDate != null) {
                 if(firebaseDate < thisMonth){
                     holder.cancelbtn.isEnabled = false
                     holder.reschedulebtn.isEnabled = false
                 }
-
-
             }
-        }
-
-//        if (currentAppointment.doctorSpeciality!! > currentDate) {
-//            //Log.i("app", "Date1 is after Date2");
-//            holder.cancelbtn.isEnabled = false
-//            holder.reschedulebtn.isEnabled = false
-//        } else if (currentAppointment.doctorSpeciality < currentDate) {
-//           // Log.i("app", "Date1 is before Date2");
-//            holder.cancelbtn.isEnabled = false
-//            holder.reschedulebtn.isEnabled = false
-//        } else if (currentAppointment.doctorSpeciality.compareTo(currentDate) == 0) {
-//          //  Log.i("app", "Date1 is equal to Date2");
-//        }
 
         //this is the Cancel Button
         holder!!.cancelbtn.setOnClickListener(View.OnClickListener { view->
@@ -156,22 +117,8 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
             }
             //notifyItemRemoved(fireStoreDatabase)
             query.addOnFailureListener{
-             //   Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
+                Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
             }
-
-//              val activity = view.context as AppCompatActivity
-//              val myFragment = MyAppointmentsFragment()
-//
-//            val fragmentTransaction: FragmentTransaction = activity.supportFragmentManager.beginTransaction()
-//            fragmentTransaction.replace(R.id.myAppointmentsCardGallery, myFragment).addToBackStack(null).commit()
-//            val ft = activity.supportFragmentManager.beginTransaction()
-//            ft.detach(this).attach(this).commit()
-
-//            val navController = Navigation.findNavController()
-//            navController.run {
-//                popBackStack()
-//                navigate(R.id.adminFragment)
-//            }
 
         })
 
