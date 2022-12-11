@@ -89,11 +89,14 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
             val firebaseDate = substringfirebaseDate.toString().toIntOrNull()
 
+
             if (firebaseDate != null) {
                 if(firebaseDate < thisMonth){
                     holder.cancelbtn.isEnabled = false
                     holder.reschedulebtn.isEnabled = false
                 }
+
+
             }
 
         //this is the Cancel Button
