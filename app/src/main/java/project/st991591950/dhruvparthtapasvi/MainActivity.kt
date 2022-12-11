@@ -1,19 +1,15 @@
 package project.st991591950.dhruvparthtapasvi
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import project.st991591950.dhruvparthtapasvi.databinding.ActivityMainBinding
-import project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment
-import project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -77,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> true
+            R.id.action_homeFragment_to_adminFragment->true
             else -> super.onOptionsItemSelected(item)
         }
     }
