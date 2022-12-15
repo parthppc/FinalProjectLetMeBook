@@ -1,19 +1,15 @@
 package project.st991591950.dhruvparthtapasvi
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
+import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
-import android.view.Menu
-import android.view.MenuItem
-import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.snackbar.Snackbar
 import project.st991591950.dhruvparthtapasvi.databinding.ActivityMainBinding
-import project.st991591950.dhruvparthtapasvi.myAppointments.MyAppointmentsFragment
-import project.st991591950.dhruvparthtapasvi.specialist.SpecialistFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +18,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -75,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
+
 //        switch (item.getItemId()) {
 //            case R.id.item1:
 //            UES Uy ae
@@ -89,6 +88,7 @@ class MainActivity : AppCompatActivity() {
         }
         else if (id == R.id.action_aboutUs){
             return true
+
         }
         else
             return super.onOptionsItemSelected(item)
