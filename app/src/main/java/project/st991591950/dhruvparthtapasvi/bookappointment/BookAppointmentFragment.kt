@@ -1,6 +1,5 @@
 package project.st991591950.dhruvparthtapasvi.bookappointment
 
-import project.st991591950.dhruvparthtapasvi.R
 import android.app.DatePickerDialog
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
@@ -11,22 +10,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebViewClient
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
 import android.widget.*
-import android.widget.EditText
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentBookAppointmentBinding
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter.ISO_DATE
-import java.time.format.DateTimeFormatter.ofLocalizedTime
 import java.util.*
 
 const val TAG = "FIRESTORE"
@@ -35,10 +25,9 @@ class BookAppointmentFragment : Fragment() {
 
     private var _binding: FragmentBookAppointmentBinding? = null
     private val binding get() = _binding!!
-    val fireStoreDatabase = FirebaseFirestore.getInstance()
+    private val fireStoreDatabase = FirebaseFirestore.getInstance()
 
-    val myCalendar: Calendar = Calendar.getInstance()
-   // var editText: EditText? = null
+    // var editText: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,20 +49,20 @@ class BookAppointmentFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
 
-        var mBundle: Bundle? = arguments
-        var doctorName = mBundle!!.getString("doctorName")
-        var clinicName = mBundle!!.getString("clinicName")
-        var speciality = mBundle!!.getString("speciality")
-        var photoUrl = mBundle!!.getString("photoUrl")
+        val mBundle: Bundle? = arguments
+        val doctorName = mBundle!!.getString("doctorName")
+        val clinicName = mBundle.getString("clinicName")
+        val speciality = mBundle.getString("speciality")
+        val photoUrl = mBundle.getString("photoUrl")
 
         //var selectedDate:String = binding!!.editTextDate.text.toString()
 
-        var specialistName: String = doctorName.toString()
-        var doctorSpeciality:String = speciality.toString()
+        val specialistName: String = doctorName.toString()
+        val doctorSpeciality:String = speciality.toString()
 
         val user = FirebaseAuth.getInstance().currentUser
-        var patientName: String =""
-        var appointmentTime: String =""
+        var patientName = ""
+        var appointmentTime: String
         if (user != null) {
         patientName = user.displayName.toString()
 
@@ -126,7 +115,7 @@ class BookAppointmentFragment : Fragment() {
                     // date to our edit text.
                     val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
                     binding.editTextDate.setText(dat)
-                    var selectedDate:String = dat.toString()
+                    val selectedDate:String = dat
                     bookedAppointment["appointmentDate"] = selectedDate
                 },
                 // on below line we are passing year, month
@@ -171,7 +160,7 @@ class BookAppointmentFragment : Fragment() {
         //Book appointment button
         binding.buttonBookAppointment.setOnClickListener(View.OnClickListener {view->
 
-            var appointmentReason: String = binding!!.editTextTextMultiLine.text.toString()
+            val appointmentReason: String = binding.editTextTextMultiLine.text.toString()
             bookedAppointment["reason"] = appointmentReason
 
             fireStoreDatabase.collection("MyAppointments")
@@ -210,11 +199,11 @@ class BookAppointmentFragment : Fragment() {
 //        return timeSlots
 //    }
 
-    private fun updateLabel() {
-        val myFormat = "MM/dd/yy"
-        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
-        //binding.editTextDate.setText(dateFormat.format(myCalendar.time))
-    }
+//    private fun updateLabel() {
+//        val myFormat = "MM/dd/yy"
+//        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+//        //binding.editTextDate.setText(dateFormat.format(myCalendar.time))
+//    }
 
 
 
