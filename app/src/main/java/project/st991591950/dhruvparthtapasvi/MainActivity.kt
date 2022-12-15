@@ -2,8 +2,7 @@ package project.st991591950.dhruvparthtapasvi
 
 import android.os.Bundle
 
-import android.view.*
-import com.google.android.material.snackbar.Snackbar
+
 
 import android.view.Menu
 import android.view.MenuItem
@@ -14,11 +13,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 
-import androidx.fragment.app.Fragment
-import androidx.navigation.NavController
+
 import androidx.navigation.Navigation
-import androidx.navigation.ui.NavigationUI
-import com.google.android.material.bottomnavigation.BottomNavigationView
+
 
 import com.google.android.material.snackbar.Snackbar
 
@@ -60,15 +57,15 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        val navcontroller = Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+        val navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
         if (item.itemId == R.id.aboutFragment) {
 
 
-            navcontroller.navigate(R.id.aboutFragment)
+            navController.navigate(R.id.aboutFragment)
             return true
         } else if (item.itemId == R.id.helpFragment) {
-            // loadFragment(AboutFragment())
-            navcontroller.navigate(R.id.helpFragment)
+
+            navController.navigate(R.id.helpFragment)
             return true
 
         }
