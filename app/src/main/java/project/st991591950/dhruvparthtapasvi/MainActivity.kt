@@ -73,11 +73,32 @@ class MainActivity : AppCompatActivity() {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            R.id.action_homeFragment_to_adminFragment->true
-            else -> super.onOptionsItemSelected(item)
+
+//        switch (item.getItemId()) {
+//            case R.id.item1:
+//            UES Uy ae
+
+        var id = item.itemId
+
+       // val activity = view.context as AppCompatActivity
+
+        if (id == R.id.action_help){
+            //findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
+            return true
         }
+        else if (id == R.id.action_aboutUs){
+            return true
+
+        }
+        else
+            return super.onOptionsItemSelected(item)
+
+//            return when (item.itemId) {
+//                R.id.action_aboutUs -> true
+//                R.id.action_help -> true
+//            else -> super.onOptionsItemSelected(item)
+//        }
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
