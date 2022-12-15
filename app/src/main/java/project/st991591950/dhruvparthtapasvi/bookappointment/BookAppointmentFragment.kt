@@ -1,7 +1,6 @@
 package project.st991591950.dhruvparthtapasvi.bookappointment
 
 import android.app.DatePickerDialog
-import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import android.os.Build
 import android.os.Bundle
@@ -20,6 +19,9 @@ import project.st991591950.dhruvparthtapasvi.databinding.FragmentBookAppointment
 import java.util.*
 
 const val TAG = "FIRESTORE"
+
+private const val KEY_RESULT = "result"
+private const val datePickerDialog = "result"
 
 class BookAppointmentFragment : Fragment() {
 
@@ -51,25 +53,24 @@ class BookAppointmentFragment : Fragment() {
 
         val mBundle: Bundle? = arguments
         val doctorName = mBundle!!.getString("doctorName")
-        val clinicName = mBundle.getString("clinicName")
-        val speciality = mBundle.getString("speciality")
-        val photoUrl = mBundle.getString("photoUrl")
+        val clinicName = mBundle!!.getString("clinicName")
+        val speciality = mBundle!!.getString("speciality")
+        val photoUrl = mBundle!!.getString("photoUrl")
 
         //var selectedDate:String = binding!!.editTextDate.text.toString()
 
         val specialistName: String = doctorName.toString()
-        val doctorSpeciality:String = speciality.toString()
+        val doctorSpeciality: String = speciality.toString()
 
-        val user = FirebaseAuth.getInstance().currentUser
+        val user = FirebaseAuth.getInstance()?.currentUser
         var patientName = ""
         var appointmentTime: String
         if (user != null) {
-        patientName = user.displayName.toString()
+            patientName = user.displayName.toString()
 
         }
 
         val bookedAppointment: MutableMap<String, Any> = HashMap()
-
 
 
         bookedAppointment["sName"] = specialistName
@@ -80,8 +81,6 @@ class BookAppointmentFragment : Fragment() {
         binding.imageView.settings.loadWithOverviewMode = true
         binding.imageView.settings.useWideViewPort = true
         binding.imageView.loadUrl(photoUrl.toString())
-
-
 
 
         binding.SpecialistName.text = doctorName.toString()
@@ -109,8 +108,7 @@ class BookAppointmentFragment : Fragment() {
             // variable for date picker dialog.
             val datePickerDialog = DatePickerDialog(
                 // on below line we are passing context.
-                this.requireContext(),
-                { view, year, monthOfYear, dayOfMonth ->
+                this.requireContext(), { view, year, monthOfYear, dayOfMonth ->
                     // on below line we are setting
                     // date to our edit text.
                     val dat = (dayOfMonth.toString() + "-" + (monthOfYear + 1) + "-" + year)
@@ -126,13 +124,12 @@ class BookAppointmentFragment : Fragment() {
             )
             // at last we are calling show
             // to display our date picker dialog.
-            datePickerDialog.getDatePicker().setMinDate(c.getTimeInMillis())
+            datePickerDialog.datePicker.minDate = c.timeInMillis
             datePickerDialog.show()
 
         }
 
         val timeslots = resources.getStringArray(R.array.TimeSlots)
-        //var timeslots = arrayOf("Java", "PHP", "Kotlin", "Javascript", "Python", "Swift")
 
         // access the spinner
         val spinner = binding.spinner2
@@ -179,33 +176,9 @@ class BookAppointmentFragment : Fragment() {
         })
     }
 
-//    @RequiresApi(Build.VERSION_CODES.O)
-//    fun TimeSlot.divide(lengthHours: Long): List<TimeSlot> {
-//        require(lengthHours > 0) { "lengthHours was $lengthHours. Must specify positive amount of hours."}
-//        val timeSlots = mutableListOf<TimeSlot>()
-//        var nextStartTime = startTime
-//        while (true) {
-//            val nextEndTime = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                nextStartTime.plusHours(lengthHours)
-//            } else {
-//                TODO("VERSION.SDK_INT < O")
-//            }
-//            if (nextEndTime > endTime) {
-//                break
-//            }
-//            timeSlots.add(TimeSlot(nextStartTime, nextEndTime))
-//            nextStartTime = nextEndTime
-//        }
-//        return timeSlots
-//    }
-
-//    private fun updateLabel() {
-//        val myFormat = "MM/dd/yy"
-//        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
-//        //binding.editTextDate.setText(dateFormat.format(myCalendar.time))
-//    }
-
-
-
+    override fun onSaveInstanceState(savedInstanceState: Bundle) {
+        super.onSaveInstanceState(savedInstanceState)
+        savedInstanceState.putString(KEY_RESULT, datePickerDialog)
+    }
 
 }

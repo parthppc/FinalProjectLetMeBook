@@ -1,6 +1,5 @@
 package project.st991591950.dhruvparthtapasvi.myAppointments
 
-import android.icu.text.SimpleDateFormat
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -9,21 +8,11 @@ import android.widget.Button
 import android.widget.RelativeLayout
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.viewmodel.viewModelFactory
-import androidx.navigation.Navigation
-import androidx.navigation.Navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.android.synthetic.main.fragment_my_appointments.*
 import kotlinx.android.synthetic.main.myappointments_item.view.*
-import kotlinx.android.synthetic.main.specialist_item.view.*
-import project.st991591950.dhruvparthtapasvi.HomeFragment
 import project.st991591950.dhruvparthtapasvi.R
-import project.st991591950.dhruvparthtapasvi.bookappointment.BookAppointmentFragment
-import project.st991591950.dhruvparthtapasvi.specialist.MyRecycleView
 import java.util.*
 
 
@@ -35,9 +24,9 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
     val calendar = Calendar.getInstance()
 
-    val thisYear = calendar[Calendar.YEAR]
+    //val thisYear = calendar[Calendar.YEAR]
     var thisMonth = calendar[Calendar.MONTH]
-    val thisDay = calendar[Calendar.DAY_OF_MONTH]
+    //val thisDay = calendar[Calendar.DAY_OF_MONTH]
 
     class MyAppointmentsViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
@@ -100,7 +89,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
             }
 
         //this is the Cancel Button
-        holder!!.cancelbtn.setOnClickListener(View.OnClickListener { view->
+        holder.cancelbtn.setOnClickListener(View.OnClickListener { view->
 
             var title: String = currentAppointment.reason.toString()
 
@@ -129,7 +118,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
             holder.myAppointmentCardView.visibility = View.GONE
         }
 
-        holder!!.reschedulebtn.setOnClickListener(View.OnClickListener{view->
+        holder.reschedulebtn.setOnClickListener(View.OnClickListener{ view->
             var title: String = currentAppointment.reason.toString()
 
             val query = fireStoreDatabase.collection("MyAppointments")
@@ -138,7 +127,8 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
             query.addOnSuccessListener {
                 for(document in it){
-                    fireStoreDatabase.collection("MyAppointments").document(document.id).update("appointmentTime",holder!!.appointmentTimeView.text.toString())
+                    fireStoreDatabase.collection("MyAppointments").document(document.id).update("appointmentTime",
+                        holder.appointmentTimeView.text.toString())
                         .addOnSuccessListener {
                             Log.d(TAG,"document updated")
                             Toast.makeText( view.context, "Appointment Time Rescheduled. \nRefresh page and check again!", Toast.LENGTH_LONG).show()
@@ -155,5 +145,6 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
     }
 
     override fun getItemCount() = appointmentList.size
+
 
 }
