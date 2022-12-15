@@ -84,5 +84,15 @@
             android:id="@+id/action_bookAppointmentFragment_to_myAppointmentsFragment"
             app:destination="@id/myAppointmentsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="project.st991591950.dhruvparthtapasvi.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>

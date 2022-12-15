@@ -1,14 +1,27 @@
 package project.st991591950.dhruvparthtapasvi
 
 import android.os.Bundle
+
+import android.view.*
+import com.google.android.material.snackbar.Snackbar
+
 import android.view.Menu
 import android.view.MenuItem
+
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
+
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 import com.google.android.material.snackbar.Snackbar
+
 import project.st991591950.dhruvparthtapasvi.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -36,70 +49,34 @@ class MainActivity : AppCompatActivity() {
             finish()
             startActivity(intent)
         }
-//        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNav)
-//        bottomNavigationView.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.nav_home -> {
-//                    loadFragment(HomeFragment())
-//
-//                }
-//                R.id.nav_specialists -> {
-//                    loadFragment(SpecialistFragment())
-//
-//                }
-//                R.id.nav_myappointments -> {
-//                    loadFragment(MyAppointmentsFragment())
-//
-//                }
-//            }
-//            true
-//        }
-
     }
-//    private  fun loadFragment(fragment: Fragment){
-//        val transaction = supportFragmentManager.beginTransaction()
-//        transaction.replace(R.id.container,fragment)
-//        transaction.addToBackStack(null)
-//        transaction.commit()
-//    }
+
+
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
 
-//        switch (item.getItemId()) {
-//            case R.id.item1:
-//            UES Uy ae
+        val navcontroller = Navigation.findNavController(this, R.id.nav_host_fragment_content_main)
+        if (item.itemId == R.id.aboutFragment) {
 
-        var id = item.itemId
 
-       // val activity = view.context as AppCompatActivity
-
-        if (id == R.id.action_help){
-            //findNavController().navigate(R.id.action_specialistFragment_to_bookAppointmentFragment)
+            navcontroller.navigate(R.id.aboutFragment)
             return true
-        }
-        else if (id == R.id.action_aboutUs){
+        } else if (item.itemId == R.id.helpFragment) {
+            // loadFragment(AboutFragment())
+            navcontroller.navigate(R.id.helpFragment)
             return true
 
         }
-        else
             return super.onOptionsItemSelected(item)
 
-//            return when (item.itemId) {
-//                R.id.action_aboutUs -> true
-//                R.id.action_help -> true
-//            else -> super.onOptionsItemSelected(item)
-//        }
 
     }
+
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
