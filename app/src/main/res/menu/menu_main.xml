@@ -1,15 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="project.st991591950.dhruvparthtapasvi.MainActivity">
+    tools:context="project.st991591950.dhruvparthtapasvi.MainActivity"
+   >
+
     <item
-        android:id="@+id/action_aboutUs"
+        android:id="@+id/aboutFragment"
         android:orderInCategory="100"
         android:title="About"
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/action_help"
+        android:id="@+id/helpFragment"
         android:orderInCategory="100"
         android:title="Help"
         app:showAsAction="never" />

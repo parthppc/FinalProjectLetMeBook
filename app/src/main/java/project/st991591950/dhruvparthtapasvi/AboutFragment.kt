@@ -5,9 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import project.st991591950.dhruvparthtapasvi.databinding.FragmentAboutBinding
+import project.st991591950.dhruvparthtapasvi.databinding.FragmentHomeBinding
 
 class AboutFragment : Fragment() {
 
+    private var _binding: FragmentAboutBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

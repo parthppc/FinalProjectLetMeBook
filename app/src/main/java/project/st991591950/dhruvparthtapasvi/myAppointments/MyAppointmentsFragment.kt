@@ -53,6 +53,8 @@ class MyAppointmentsFragment: Fragment() {
 
         setActivityTitle(R.string.myappointments_fragment_label)
 
+
+
         return root
     }
     @SuppressLint("ResourceType")
