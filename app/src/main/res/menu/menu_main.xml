@@ -16,10 +16,5 @@
         android:title="Help"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_adminFragment"
-        android:orderInCategory="200"
-        android:title="Admin Fragment"
-        app:showAsAction="never"
-        />
+
 </menu>
