@@ -56,9 +56,6 @@ class MainActivity : AppCompatActivity() {
             navController.navigate(R.id.helpFragment)
             return true
 
-        } else if (item.itemId == R.id.homeFragment) {
-            navController.navigate(R.id.homeFragment)
-            return true
         }
             return super.onOptionsItemSelected(item)
 
