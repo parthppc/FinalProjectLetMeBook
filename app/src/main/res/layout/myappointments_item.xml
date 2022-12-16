@@ -94,26 +94,26 @@
             android:layout_marginTop="85dp"
             android:text="Reason:" />
 
+        <!--        <Button-->
+<!--            android:id="@+id/cancelbtn"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_alignParentTop="true"-->
+<!--            android:layout_marginStart="283dp"-->
+<!--            android:layout_marginTop="110dp"-->
+<!--            android:text="Cancel"-->
+<!--            android:textSize="10sp" />-->
+
         <Button
             android:id="@+id/reschedulebtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="103dp"
             android:text="Reschedule"
-            android:textSize="10sp" />
-
-        <Button
-            android:id="@+id/cancelbtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="283dp"
-            android:layout_marginTop="110dp"
-            android:text="Cancel"
             android:textSize="10sp" />
 
         <TextView
