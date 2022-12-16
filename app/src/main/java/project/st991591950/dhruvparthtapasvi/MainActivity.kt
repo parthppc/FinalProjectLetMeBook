@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
 
             finish()
-            //startActivity(intent)
+            startActivity(intent)
         }
     }
 
