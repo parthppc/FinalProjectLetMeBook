@@ -38,7 +38,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
         val myAppointmentCardView: RelativeLayout = itemView.myAppointmentsCard
 
 
-        val cancelbtn: Button = itemView.cancelbtn
+        //val cancelbtn: Button = itemView.cancelbtn
         val reschedulebtn: Button = itemView.reschedulebtn
 
 
@@ -81,7 +81,7 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
 
             if (firebaseDate != null) {
                 if(firebaseDate < thisMonth){
-                    holder.cancelbtn.isEnabled = false
+                    //holder.cancelbtn.isEnabled = false
                     holder.reschedulebtn.isEnabled = false
                 }
 
@@ -89,30 +89,30 @@ class MyAppointmentsRecycleView (private val appointmentList: List<MyAppointment
             }
 
         //this is the Cancel Button
-        holder.cancelbtn.setOnClickListener(View.OnClickListener { view->
-
-            var title: String = currentAppointment.reason.toString()
-
-            val query = fireStoreDatabase.collection("MyAppointments")
-                .whereEqualTo("reason", title)
-                .get()
-
-            query.addOnSuccessListener {
-                for(document in it){
-                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
-                        .addOnSuccessListener {
-                            Log.d(TAG," document deleted with")
-                            Toast.makeText( view.context, "Appointment Canceled. \nRefresh page and check again!", Toast.LENGTH_LONG).show()
-
-                        }
-                }
-            }
-            //notifyItemRemoved(fireStoreDatabase)
-            query.addOnFailureListener{
-                Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
-            }
-
-        })
+//        holder.cancelbtn.setOnClickListener(View.OnClickListener { view->
+//
+//            var title: String = currentAppointment.reason.toString()
+//
+//            val query = fireStoreDatabase.collection("MyAppointments")
+//                .whereEqualTo("reason", title)
+//                .get()
+//
+//            query.addOnSuccessListener {
+//                for(document in it){
+//                    fireStoreDatabase.collection("MyAppointments").document(document.id).delete()
+//                        .addOnSuccessListener {
+//                            Log.d(TAG," document deleted with")
+//                            Toast.makeText( view.context, "Appointment Canceled. \nRefresh page and check again!", Toast.LENGTH_LONG).show()
+//
+//                        }
+//                }
+//            }
+//            //notifyItemRemoved(fireStoreDatabase)
+//            query.addOnFailureListener{
+//                Toast.makeText(view.context,"Appoinment Not found", Toast.LENGTH_SHORT).show()
+//            }
+//
+//        })
 
         } else {
             holder.myAppointmentCardView.visibility = View.GONE

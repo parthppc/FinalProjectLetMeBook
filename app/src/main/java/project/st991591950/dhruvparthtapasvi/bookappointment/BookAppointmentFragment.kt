@@ -42,13 +42,10 @@ class BookAppointmentFragment : Fragment() {
     ): View? {
 
         _binding = FragmentBookAppointmentBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-
-        return root
+        return binding.root
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
 
         val mBundle: Bundle? = arguments
@@ -63,7 +60,7 @@ class BookAppointmentFragment : Fragment() {
         val doctorSpeciality: String = speciality.toString()
 
         val user = FirebaseAuth.getInstance()?.currentUser
-        var patientName = ""
+        var patientName =  " "
         var appointmentTime: String
         if (user != null) {
             patientName = user.displayName.toString()
@@ -91,8 +88,6 @@ class BookAppointmentFragment : Fragment() {
 
         //dateEdt =binding.editTextDate
         binding.editTextDate.setOnClickListener {
-
-
 
             // on below line we are getting
             // the instance of our calendar.
