@@ -17,11 +17,5 @@
         android:title="@string/help"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/homeFragment"
-        android:orderInCategory="100"
-        android:title="@string/home"
-        app:showAsAction="never" />
-
 
 </menu>
