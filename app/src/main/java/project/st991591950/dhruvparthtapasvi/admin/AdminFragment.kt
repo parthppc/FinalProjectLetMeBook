@@ -2,23 +2,17 @@ package project.st991591950.dhruvparthtapasvi.admin
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentChange
-import com.google.firebase.firestore.EventListener
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.FirebaseFirestoreException
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.firestore.*
 import project.st991591950.dhruvparthtapasvi.R
 import project.st991591950.dhruvparthtapasvi.databinding.FragmentAdminBinding
 
@@ -44,7 +38,7 @@ class AdminFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val adminViewModel = ViewModelProvider(this).get(AdminViewModel::class.java)
+        //val adminViewModel = ViewModelProvider(this).get(AdminViewModel::class.java)
 
         _binding = FragmentAdminBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -97,6 +91,7 @@ class AdminFragment : Fragment() {
                     }
                 }
                 myAdapter.notifyDataSetChanged()
+
             }
         })
     }

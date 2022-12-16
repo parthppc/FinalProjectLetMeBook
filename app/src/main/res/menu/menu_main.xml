@@ -4,16 +4,23 @@
     tools:context="project.st991591950.dhruvparthtapasvi.MainActivity"
    >
 
+
     <item
         android:id="@+id/aboutFragment"
         android:orderInCategory="100"
-        android:title="About"
+        android:title="@string/about"
         app:showAsAction="never" />
 
     <item
         android:id="@+id/helpFragment"
         android:orderInCategory="100"
-        android:title="Help"
+        android:title="@string/help"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/homeFragment"
+        android:orderInCategory="100"
+        android:title="@string/home"
         app:showAsAction="never" />
 
 

@@ -6,4 +6,10 @@
     <string name="profile_fragment_label">Profile</string>
     <string name="admin_fragment_label">Admin Console</string>
     <string name="myappointments_fragment_label">My Appointments</string>
+    <string name="about_fragment_label">About</string>
+    <string name="help_fragment_label">Help</string>
+    <string name="help_text">Helo</string>
+    <string name="about">About</string>
+    <string name="help">Help</string>
+    <string name="home">Home</string>
 </resources>
